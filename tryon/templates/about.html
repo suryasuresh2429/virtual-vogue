@@ -1,0 +1,191 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'images/icon1.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Virtual Vogue</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %} " rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    .navbar{
+      background-color: rgba(0, 0, 0, 1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container fixed-top">
+        <a class="navbar-brand">
+            <img src="{% static 'images/11.png' %}" alt="Virtual Vogue Logo" style="height:18vh; width:44vh;">
+            <span></span>
+        </a>
+        <div class="navbar-links">
+          <a href="{% url 'index' %}">Home</a>
+          <a href="{% url 'about' %}">About</a>
+          {% if user.is_authenticated %}
+          <a href="{% url 'tryon' %}">Tryon</a>
+          <a href="{% url 'user_profile' %}">User Profile</a>
+          <a href="{% url 'logout' %}">Logout</a>
+          <a href="{% url 'delete_account' %}">Delete Account</a>
+          {% else %}
+          <a href="{% url 'register' %}">Register</a>
+          <a href="{% url 'login' %}">Login</a>
+          {% endif %}
+          {% comment %} <a href="{% url 'contact' %}">Contact</a> {% endcomment %}
+      </div>
+    </nav>
+    
+    </div>
+  </header>
+  <br><br><br><br>
+  <!-- end header section -->
+
+  <!-- about section -->
+
+  <section class="about_section  layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/about.jpg' %}" alt="">
+          </div>
+          
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Us
+              </h2>
+            </div>
+            <p>
+              Welcome to Virtual Vogue, your ultimate destination for a revolutionary online shopping experience. At Virtual Vogue, we harness the power of artificial intelligence to bring your fashion dreams to life.
+               Our cutting-edge AI Virtual Try-On service allows you to virtually try on dresses using your personalized AI-created avatar, ensuring that every outfit fits you perfectly before you make a purchase.
+           <br>
+           
+            Our unique approach starts with you—your face, skin color, hair, and body measurements are all considered to create an AI avatar that is a true reflection of you. 
+            This personalized avatar then becomes your virtual model, enabling you to see how different dresses and outfits will look and fit on your own body.
+           </p>
+           <p>
+           <h5 style=" color:#3F023F;"> Our Mission</h5>
+At Virtual Vogue, our mission is to make online shopping more personalized, convenient, and fun.
+ We aim to eliminate the guesswork and uncertainty of buying clothes online, allowing you to see exactly how each item will look on you before you buy. We believe that everyone deserves to look and feel their best in the clothes they wear,
+  and our AI Virtual Try-On service is designed to help you achieve just that.
+           </p>
+           <p>
+            <h5 style=" color:#3F023F;">
+              Why Choose Us?</h5>
+              <li> <b>Personalized Experience:</b> Our AI technology creates a unique avatar based on your specific measurements and features, providing a truly personalized shopping experience.</li>
+              <li><b>Try Before You Buy:</b>See how different dresses and outfits will look on your avatar, helping you make confident and informed purchase decisions.</li>
+             <li><b>Cutting-Edge Technology:</b>We use the latest in AI and virtual reality to bring you an immersive and interactive shopping experience.</li>
+             <li><b>Convenience: </b>Shop from the comfort of your home and try on as many outfits as you like without the hassle of changing rooms or returns.</li>
+            </h5>
+          </p>
+          <p>
+            <h5 style=" color:#3F023F;">Join Us</h5>
+            Join the fashion revolution with Virtual Vogue and transform the way you shop online. Whether you're looking for the perfect dress for a special occasion or updating your wardrobe with the latest trends, our AI Virtual 
+            Try-On service is here to make your shopping journey seamless and enjoyable. <br>
+            ~Discover the future of fashion with Virtual Vogue—where your style meets technology~
+          </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row info_form_social_row">
+        <div class="col-md-8 col-lg-9">
+          <div class="info_form">
+            <form action="">
+              <input type="email" placeholder="Enter your email">
+              <button>
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+
+          <div class="social_box">
+            <a href="">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fab fa-google" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+  
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="">@virtualvogue.com</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+
+  <!-- jQery -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "bcd83ef7-94bc-48a6-a96c-14a02c1c6ca9", // The ID of this integration.
+      region: "au-syd", // The region your integration is hosted in.
+      serviceInstanceID: "2f9eb7f5-64fb-4720-a92c-bec071bc2260", // The ID of your service instance.
+      onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function(){
+      const t=document.createElement('script');
+      t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+      document.head.appendChild(t);
+    });
+  </script>
+
+</body>
+
+</html>

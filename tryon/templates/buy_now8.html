@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Styling for Buy Now page */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-details img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .checkout-form {
+            margin-top: 20px;
+        }
+
+        .checkout-form input, .checkout-form select {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .checkout-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .checkout-form button:hover {
+            background-color: #45a049;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-group .btn {
+            background-color: #ff5733;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .btn-group .btn:last-child {
+            margin-right: 0;
+        }
+
+        .btn-group .btn:hover {
+            background-color: #c44529;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Buy Now</h2>
+    <div class="product-details">
+        <div class="product-image">
+            <img src="{% static 'images/13196_00.jpg' %}" alt="{{ Jacket }}">
+        </div>
+        <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>Price: ₹ 1999</p>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <a href="{% url 'add_to_cart' %}" class="btn">Add to Cart</a>
+        <a href="{% url 'wishlist' %}" class="btn">Add to Wish List</a>
+    </div>
+
+    <div class="checkout-form">
+        <form action="{}" method="POST">
+        
+            <button type="submit"> <a href="https://docs.google.com/forms/d/18CS_Y8Hh9Dc174gFXsOua_N_xj_9gc4fCFKPADqVV6c">Proceed to Payment</a></button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

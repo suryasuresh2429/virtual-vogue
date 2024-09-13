@@ -1,0 +1,303 @@
+{% comment %} {% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Styling for Buy Now page */
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-details img {
+            max-width: 300px;
+            height: auto;
+        }
+
+        .checkout-form {
+            margin-top: 20px;
+        }
+
+        .checkout-form input, .checkout-form select {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+        }
+
+        .checkout-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .checkout-form button:hover {
+            background-color: #45a049;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .btn-group .btn {
+            background-color: #ff5733;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .btn-group .btn:last-child {
+            margin-right: 0;
+        }
+
+        .btn-group .btn:hover {
+            background-color: #c44529;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Buy Now</h2>
+    <div class="product-details">
+        <div class="product-image">
+            <img src="{% static 'images/00848_00.jpg' %}" alt="{{ Longsleeve_Top }}">
+        </div>
+        <div class="product-info">
+            <h3>{{ Longsleeve_Top }}</h3>
+            <p>Price: ₹ 500</p>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        <a href="{% url 'add_to_cart' %}" class="btn">Add to Cart</a>
+        <a href="{% url 'wishlist' %}" class="btn">Add to Wish List</a>
+    </div>
+
+    <div class="checkout-form">
+        <form action="{}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="address" placeholder="Enter your address" required>
+            <input type="text" name="pin" placeholder="Enter your PIN" required>
+            <input type="text" name="phone" placeholder="Enter your phone number" required>
+            <select name="payment_method" required>
+                <option value="" disabled selected>Select Payment Method</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="paypal">C.O.D</option>
+            </select>
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html> {% endcomment %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'images/icon1.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Virtual Vogue</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %} " rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Styling for Buy Now page */
+    
+
+
+    .product-details {
+        
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        margin: auto;
+        padding: 22vh;
+        text-align:center;
+        font-weight:bold;
+    }
+h2{
+    text-align:center;
+    color:#3F023F;
+    font-weight:bold;
+}
+    .product-details img {
+        max-width: 20em;
+        height: 19em;
+    }
+
+
+    .checkout-form input, .checkout-form select {
+        {% comment %} margin-bottom: 10px; {% endcomment %}
+        padding: 1em;
+        width: 100%;
+    }
+
+    .checkout-form button {
+        background-color:#3F023F;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        
+    }
+    .navbar{
+        background-color: rgba(0, 0, 0, 1);
+      }
+</style>
+</head>
+
+<body>
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container fixed-top">
+        <a class="navbar-brand">
+            <img src="{% static 'images/11.png' %}" alt="Virtual Vogue Logo" style="height:16vh; width:42vh;">
+            <span></span>
+        </a>
+        <div class="navbar-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'tryon' %}">Tryon</a>
+            <a href="{% url 'user_profile' %}">User Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'delete_account' %}">Delete Account</a>
+            {% else %}
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+            {% comment %} <a href="{% url 'contact' %}">Contact</a> {% endcomment %}
+        </div>
+    </nav>
+    
+    </div>
+  </header>
+  
+
+  <!-- end header section -->
+
+  
+  <div class="container">
+   
+    <div class="product-details">
+        <h2>Buy Now</h2>
+        <div class="product-image">
+            <img src="{% static 'images/00884_00.jpg' %}" alt="{{Crop_Top}}">
+        </div>
+        <div class="product-info">
+            <h3>{{ Crop_Top }}</h3>
+            <p>Price: ₹ 1999</p>
+        </div>
+        <div class="checkout-form">
+            <form action="{}" method="POST">
+         
+                <button type="submit"> <a href="https://docs.google.com/forms/d/18CS_Y8Hh9Dc174gFXsOua_N_xj_9gc4fCFKPADqVV6c">Proceed to Payment</a></button>
+            </form>
+        </div>
+    </div>
+
+    {% comment %} <div class="btn-group">
+        <a href="{% url 'add_to_cart' %}" class="btn">Add to Cart</a>
+        <a href="{% url 'wishlist' %}" class="btn">Add to Wish List</a>
+    </div> {% endcomment %}
+
+    
+    
+</div>
+
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row info_form_social_row">
+        <div class="col-md-8 col-lg-9">
+          <div class="info_form">
+            <form action="">
+              <input type="message" placeholder="Message us !!!...">
+              <button>
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+
+          <div class="social_box">
+            <a href="">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fab fa-google" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+       
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+  
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="">@virtualvogue.com</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+
+</html>

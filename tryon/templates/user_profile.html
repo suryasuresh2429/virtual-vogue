@@ -1,0 +1,350 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Virtual Vogue</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .user_profile {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'images/user_profile.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+        .user_profile_container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+    .footer-container{
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+        overflow: hidden;
+        {% comment %} padding: 20px; {% endcomment %}
+        background: rgba(0, 0, 0, 0.1);
+    }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+        
+      
+       
+        
+    /* Profile section styling */
+    .profile {
+        text-align: center;
+    }
+
+    .profile h2 {
+        margin-bottom: 20px;
+        font-family: 'Poppins', sans-serif; /* Changed font family */
+        color: #4b0082; /* Changed color */
+        font-size: 30px; /* Increased font size for the heading */
+        font-weight: 600; /* Bold heading */
+        text-transform: uppercase; /* Uppercase text */
+        letter-spacing: 2px; /* Letter spacing for style */
+        border-bottom: 2px solid #8a2be2; /* Bottom border for heading */
+        display: inline-block;
+        padding-bottom: 10px;
+    }
+
+    /* Form group styling */
+    .form-group {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        text-align: left;
+    }
+
+    .form-group label {
+        flex: 1;
+        margin-right: 10px;
+        font-weight: bold; /* Bold labels */
+        font-size: 16px; /* Increased font size for labels */
+        color: #4b0082; /* Color for labels */
+    }
+
+    .form-group input,
+    .form-group select {
+        flex: 2;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px; /* Rounded corners */
+        box-sizing: border-box;
+        font-size: 16px; /* Increased font size for input fields */
+        transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #8a2be2; /* Border color on focus */
+        box-shadow: 0 0 8px rgba(138, 43, 226, 0.2); /* Subtle box shadow on focus */
+        outline: none; /* Remove default outline */
+    }
+
+    /* File input styling */
+    .form-group input[type="file"] {
+        font-size: 16px; /* Increased font size for file input */
+        padding: 10px; /* Padding for file input */
+        border: 2px dashed #8a2be2; /* Dashed border for file input */
+        background-color: #f9f9f9; /* Light background color for file input */
+        cursor: pointer; /* Cursor pointer for file input */
+        transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus effects */
+    }
+
+    .form-group input[type="file"]:focus {
+        border-color: #551a8b; /* Border color on focus for file input */
+        box-shadow: 0 0 8px rgba(85, 26, 139, 0.2); /* Subtle box shadow on focus for file input */
+    }
+
+    /* Submit button styling */
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #4494d1;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 18px; /* Increased font size for the button */
+        cursor: pointer;
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+    }
+
+    button[type="submit"]:hover {
+        background-color: #4494d1;
+        transform: scale(1.05);
+        }
+        label{color:white;}
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.0);
+        }
+        
+        .navbar img {
+            height: 24vh;
+            width: 44vh;
+        }
+        
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+            margin-left: auto; /* Aligns links to the right */
+        }
+        
+        .navbar-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+        
+        .navbar-links a:hover {
+            text-decoration: underline;
+        }
+        
+    
+    </style>
+</head>
+<body class='user_profile'>
+
+<!-- header section starts -->
+
+          
+           
+         
+<div class="navbar">
+    <img src="{% static 'images/11.png' %}" alt="" style="height:24vh; width:44vh;">
+    <div class="navbar-links">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        {% if user.is_authenticated %}
+        <a href="{% url 'tryon' %}">Tryon</a>
+        <a href="{% url 'user_profile' %}">User Profile</a>
+        <a href="{% url 'logout' %}">Logout</a>
+        <a href="{% url 'delete_account' %}">Delete Account</a>
+        {% else %}
+        <a href="{% url 'register' %}">Register</a>
+        <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </div>
+</div>
+
+        </div>
+      </nav>
+    </div>
+</header>
+<!-- end header section -->
+
+ <div class="user_profile_container">
+        <section class="profile">
+            <h2 style="color:white">User Profile</h2>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="height" style="color:white">Height:</label>
+                    <input type="number" id="height" name="height" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight" style="color:white">Chest size:</label>
+                    <input type="number" id="chest_size" name="chest_size" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="hip_size" style="color:white">Hip Size:</label>
+                    <input type="number" id="hip_size" name="hip_size" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label for="skin_tone" style="color:white">Skin Tone:</label>
+                    <input type="text" id="skin_tone" name="skin_tone" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender" style="color:white">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="profile_image" style="color:white">Profile Image:</label>
+                <input type="file" id="profile_image" name="profile_image" accept="image/*">
+                <button type="button" id="open_camera" style="color:white;background:#3F023F; border: none; padding: 10px; font-size: 24px;">
+                    <i class="fas fa-camera"></i>
+                </button>
+                
+                <video id="video" width="320" height="240" autoplay></video>
+                <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+                <button type="button" id="capture" style="color:white;background:#3F023F;">Capture Photo</button>
+                <input type="hidden" id="captured_image" name="captured_image">
+                </div>
+                <button type="submit" style="color:white;background:#3F023F;">Update Profile</button>
+            </form>
+        </section>
+    </div>
+
+<!-- info section -->
+<section class="info_section layout_padding2">
+    <div class="container">
+        <div class="row info_form_social_row">
+            <div class="col-md-8 col-lg-9">
+                <div class="info_form">
+                    <form action="">
+                        <input type="message" placeholder="Message us !!!......">
+                        <button>
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="social_box">
+                    <a href="">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-google" aria-hidden="true"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        
+       
+            
+           
+            
+        </div>
+    </div>
+</section>
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <p style="color:#ffffff"> 
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="">@virtualvogue.com</a>
+        </p>
+    </div>
+</footer>
+<!-- footer section -->
+
+<!-- jQuery -->
+<script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+{% comment %} #camera {% endcomment %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const openCameraButton = document.getElementById('open_camera');
+        const captureButton = document.getElementById('capture');
+        const capturedImageInput = document.getElementById('captured_image');
+    
+        // Open webcam
+        openCameraButton.addEventListener('click', function() {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    video.srcObject = stream;
+                    video.play();
+                })
+                .catch(error => {
+                    console.error('Error accessing webcam: ', error);
+                });
+        });
+    
+        // Capture photo
+        captureButton.addEventListener('click', function() {
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL('image/png');
+            capturedImageInput.value = dataUrl;
+    
+            // Optionally stop the video stream
+            const stream = video.srcObject;
+            if (stream) {
+                const tracks = stream.getTracks();
+                tracks.forEach(track => track.stop());
+            }
+    
+            // Hide video and canvas
+            video.style.display = 'none';
+            canvas.style.display = 'none';
+        });
+    });
+    </script>
+    {% comment %} chatbot {% endcomment %}
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "bcd83ef7-94bc-48a6-a96c-14a02c1c6ca9", // The ID of this integration.
+          region: "au-syd", // The region your integration is hosted in.
+          serviceInstanceID: "2f9eb7f5-64fb-4720-a92c-bec071bc2260", // The ID of your service instance.
+          onLoad: async (instance) => { await instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+      </script>
+</body>
+</html>

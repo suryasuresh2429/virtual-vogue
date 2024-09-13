@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .wishlist-section h2 {
+            font-size: 28px;
+            color: #333;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .wishlist-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .wishlist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+            background-color: #fff;
+        }
+
+        .wishlist-item:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .wishlist-image img {
+            width: 100px;
+            height: auto;
+            border-radius: 8px;
+            margin-right: 20px;
+        }
+
+        .wishlist-info {
+            flex: 1;
+        }
+
+        .wishlist-info p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .wishlist-info .buy-now-btn {
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .wishlist-info .buy-now-btn:hover {
+            background-color: #45a049;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #ff6347;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        .remove-btn:hover {
+            color: #e5533d;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            font-size: 18px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="wishlist-section">
+        <h2>Your Wish List</h2>
+        <p>Wishlist items count: {{ wishlist.count }}</p>
+
+        {% if wishlist %}
+            <ul class="wishlist-items">
+                {% for item in wishlist %}
+                    <li class="wishlist-item">
+                        <div class="wishlist-image">
+                            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                        </div>
+                        <div class="wishlist-info">
+                            <p><strong>{{ item.product.name }}</strong></p>
+                            <p>Color: {{ item.selected_color }}</p>
+                            <p>Size: {{ item.selected_size }}</p>
+                            <p>Qty: {{ item.quantity }}</p>
+                            <p>Price: ₹{{ item.product.price }}</p>
+                            <a href="{% url 'buy_now_page' item.product.id %}" class="buy-now-btn">Buy Now</a>
+                        </div>
+                        <form method="POST" action="{% url 'remove_from_wishlist' item.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="remove-btn">Remove</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="wishlist-empty">Your wish list is empty.</p>
+        {% endif %}
+    </div>
+</div>
+
+</body>
+</html>

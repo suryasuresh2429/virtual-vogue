@@ -1,0 +1,636 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <link rel="icon" href="{% static 'images/icon1.png' %}" type="image/gif" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Virtual Vogue</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'css/responsive.css' %} " rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+<body>
+  <header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container fixed-top">
+        <a class="navbar-brand">
+            <img src="{% static 'images/11.png' %}" alt="Virtual Vogue Logo" style="height:18vh; width:44vh;">
+            <span></span>
+        </a>
+        <div class="navbar-links">
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            {% if user.is_authenticated %}
+            <a href="{% url 'tryon' %}">Tryon</a>
+            <a href="{% url 'user_profile' %}">User Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            <a href="{% url 'delete_account' %}">Delete Account</a>
+            {% else %}
+            <a href="{% url 'register' %}">Register</a>
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+            {% comment %} <a href="{% url 'contact' %}">Contact</a> {% endcomment %}
+        </div>
+    </nav>
+    
+    </div>
+  </header>
+  
+
+  <!-- end header section -->
+
+  <!-- slider section -->
+  <section class="slider_section position-relative">
+    <div class="slider_bg_box">
+      <img src="{% static 'images/im3.jpg' %}" alt="">
+    </div>
+    <div class="slider_bg"></div>
+    <div class="container">
+      <div class="col-md-9 col-lg-8">
+        <div class="detail-box">
+          <h1>
+           Virtual Vogue
+          </h1>
+          <p>
+            Welcome to Virtual Vogue - Your Ultimate Fashion Playground!
+            <br>
+            Experience the future of fashion with our AI-powered virtual try-on. Discover, style, and shop your perfect look in an instant. Try it now!
+          </p>
+          <div>
+            {% if user.is_authenticated %}
+            <a href="{% url 'user_profile' %}" class="slider-link">
+            Get started
+            </a>
+            {% else %}
+            <a href="{% url 'login' %}" class="slider-link" >
+            Get started
+            </a>
+            {% endif %}
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+    <script>
+      window.watsonAssistantChatOptions = {
+        integrationID: "bcd83ef7-94bc-48a6-a96c-14a02c1c6ca9", // The ID of this integration.
+        region: "au-syd", // The region your integration is hosted in.
+        serviceInstanceID: "2f9eb7f5-64fb-4720-a92c-bec071bc2260", // The ID of your service instance.
+        onLoad: async (instance) => { await instance.render(); }
+      };
+      setTimeout(function(){
+        const t=document.createElement('script');
+        t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+      });
+    </script>
+  </section>
+  <!-- end slider section -->
+
+  <!-- shop section -->
+
+  <section class="shop_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>
+          Latest Products
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/13196_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Jacket
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    1000
+                  </span>
+                </h6>
+               
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/13204_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Tunics
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    800
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now1' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/00095_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Polka Tunics
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    610
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now2' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/13709_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  V Neck Top
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    900
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now4' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/14008_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Striated Tunic
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    1000
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now7' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/14249_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Korean Tunics
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    670
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now6' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/00884_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  crop Top
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    890
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now5' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="box">
+            <a href="">
+              <div class="img-box">
+                <img src="{% static 'images/00848_00.jpg' %}" alt="">
+              </div>
+              <div class="detail-box">
+                <h6>
+                  Longsleeve Top
+                </h6>
+                <h6>
+                  Price
+                  <span>
+                    450
+                  </span>
+                </h6>
+              </div>
+              <button style="background:#3F023F;">
+                <a href="{% url 'buy_now3' %}" style="color:white;">Buy Now</a>
+                </button>
+              <div class="new">
+                <span>
+                  New
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="btn-box">
+        {% if user.is_authenticated %}
+        <a href="tryon">TryOn</a>
+          {% else %}
+          <a href="{% url 'login' %}">Tryon</a>
+          {% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- end shop section -->
+
+  <!-- about section -->
+
+  <section class="about_section  ">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src="{% static 'images/about1.webp' %}" alt="">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                About Us
+              </h2>
+            </div>
+            <p>Welcome to Virtual Vogue, where fashion meets technology. We are revolutionizing the way you shop for clothes with our AI-powered virtual try-on platform. At Virtual Vogue,
+               we believe that every individual deserves a personalized and immersive shopping experience. <br>
+               Our cutting-edge technology allows you to create unique avatars that mirror your exact look, including face, skin tone, hair, and body measurements. With Virtual Vogue, you can effortlessly try on a variety 
+               of outfits from the comfort of your home, ensuring the perfect fit and style every time. <br>
+               Explore the latest trends, experiment with new styles, and find your perfect wardrobe 
+               with Virtual Vogue. Join us in redefining the future of fashion. <br>
+               <b style="font-family:Dancing script">Discover. Style. Shop. </b>
+
+              </p>
+            <a href="about">
+              Read More
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+
+ <!-- Offer Section -->
+<section class="offer_section layout_padding">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-7 px-0">
+        <div class="box offer-box1">
+          <img src="{% static 'images/00858_00.jpg' %}" alt="">
+          <div class="detail-box">
+            <h2>Upto 15% Off</h2>
+            {% if user.is_authenticated %}
+            <a href="tryon">Try Now</a>
+            {% else %}
+            <a href="{% url 'login' %}">Tryon</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 px-0">
+        <div class="box offer-box2">
+          <img src="{% static 'images/14164_00.jpg' %}" alt="">
+          <div class="detail-box">
+            <h2>Upto 10% Off</h2>
+            {% if user.is_authenticated %}
+            <a href="tryon">Try Now</a>
+            {% else %}
+            <a href="{% url 'login' %}">Try Now</a>
+            {% endif %}
+          </div>
+        </div>
+        <div class="box offer-box3">
+          <img src="{% static 'images/13620_00.jpg' %}" alt="">
+          <div class="detail-box">
+            <h2>Upto 20% Off</h2>
+            {% if user.is_authenticated %}
+            <a href="tryon">Try Now</a>
+            {% else %}
+            <a href="{% url 'login' %}">Tryon</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- end offer section -->
+
+<!-- client section -->
+
+<section class="client_section layout_padding">
+  <div class="container">
+    <div class="heading_container">
+      <h2>
+        Review
+      </h2>
+    </div>
+    <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="row">
+            <div class="col-md-11 col-lg-10 mx-auto">
+              <div class="box">
+                <div class="img-box">
+                  <img src="{% static 'images/client.jpg' %}" alt="" />
+                </div>
+                <div class="detail-box">
+                  <div class="name">
+                    <h6>
+                      Nandana s
+                    </h6>
+                  </div>
+                  <p>
+                    "Virtual Vogue's virtual try-on feature is a brilliant idea! It helped me find the perfect fit without any guesswork."
+                  </p>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-11 col-lg-10 mx-auto">
+              <div class="box">
+                <div class="img-box">
+                  <img src="{% static 'images/client.jpg' %}" alt="" />
+                </div>
+                <div class="detail-box">
+                  <div class="name">
+                    <h6>
+                      Adithya Lekshmi
+                    </h6>
+                  </div>
+                  <p>
+                    "The avatar creation was quick and accurate, and seeing the dresses on a 3D model of myself was fantastic!"
+                  </p>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-11 col-lg-10 mx-auto">
+              <div class="box">
+                <div class="img-box">
+                  <img src="{% static 'images/client.jpg' %}" alt="" />
+                </div>
+                <div class="detail-box">
+                  <div class="name">
+                    <h6>
+                      Rahitha T Nair
+                    </h6>
+                  </div>
+                  <p>
+                    "Virtual Vogue made online shopping so much easier by letting me see how dresses look on my personalized avatar!"
+                  </p>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-11 col-lg-10 mx-auto">
+              <div class="box">
+                <div class="img-box">
+                  <img src="{% static 'images/client.jpg' %}" alt="" />
+                </div>
+                <div class="detail-box">
+                  <div class="name">
+                    <h6>
+                      Sallap SS
+                    </h6>
+                  </div>
+                  <p>
+                    "Virtual Vogue's avatar try-on feature helped me pick the perfect dress for my wife; I could see how each option would look on her!"
+                  </p>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="row">
+            <div class="col-md-11 col-lg-10 mx-auto">
+              <div class="box">
+                <div class="img-box">
+                  <img src="{% static 'images/client.jpg' %}" alt="" />
+                </div>
+                <div class="detail-box">
+                  <div class="name">
+                    <h6>
+                      Ganga Ghosh
+                    </h6>
+                  </div>
+                  <p>
+                    "I loved being able to try on dresses virtually before buying; it saved me so much time and hassle."
+                  </p>
+                  <i class="fa fa-quote-left" aria-hidden="true"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel_btn-container">
+        <a class="carousel-control-prev" href="#carouselExample2Controls" role="button" data-slide="prev">
+          <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExample2Controls" role="button" data-slide="next">
+          <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- end client section -->
+
+  <!-- info section -->
+  <section class="info_section layout_padding2">
+    <div class="container">
+      <div class="row info_form_social_row">
+        <div class="col-md-8 col-lg-9">
+          <div class="info_form">
+            <form action="">
+              <input type="message" placeholder="Message us !!!...">
+              <button>
+                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-4 col-lg-3">
+
+          <div class="social_box">
+            <a href="">
+              <i class="fab fa-facebook" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fab fa-google" aria-hidden="true"></i>
+            </a>
+            <a href="">
+              <i class="fab fa-instagram" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+       
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- end info_section -->
+  
+
+  <!-- footer section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="">@virtualvogue.com</a>
+      </p>
+    </div>
+  </footer>
+  <!-- footer section -->
+  <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.js' %}"></script>
+  <script src="{% static 'js/custom.js' %}"></script>
+</body>
+
+
+</html>

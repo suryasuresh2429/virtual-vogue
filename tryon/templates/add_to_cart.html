@@ -1,0 +1,244 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        /* Styling for Buy Now page */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .product-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product-details img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product-info {
+            margin-left: 20px;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #ff5733;
+        }
+
+        .product-info p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+
+        .btn-group .btn {
+            background-color: #ff5733;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 5px;
+            margin-right: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-group .btn:hover {
+            background-color: #c44529;
+        }
+
+        .checkout-form {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .checkout-form input, .checkout-form select {
+            margin-bottom: 15px;
+            padding: 12px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .checkout-form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .checkout-form button:hover {
+            background-color: #45a049;
+        }
+        /* static/css/style.css */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-details img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-info {
+    margin-left: 20px;
+    flex-grow: 1;
+}
+
+.product-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ff5733;
+}
+
+.product-info p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.btn-group .btn {
+    background-color: #ff5733;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 5px;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-group .btn:hover {
+    background-color: #c44529;
+}
+
+.checkout-form {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.checkout-form input, .checkout-form select {
+    margin-bottom: 15px;
+    padding: 12px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.checkout-form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.checkout-form button:hover {
+    background-color: #45a049;
+}
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Buy Now</h2>
+    <div class="product-details">
+        <div class="product-image">
+            <img src="{% static 'images/13196_00.jpg' %}" alt="Jacket">
+        </div>
+        <div class="product-info">
+            <h3>{{ product.name }}</h3>
+            <p>Price: ₹ 1999</p>
+        </div>
+    </div>
+
+    <div class="btn-group">
+        {% comment %} <a href="{% url 'add_to_cart' product.id %}" class="btn">Add to Cart</a> {% endcomment %}
+        <a href="{% url 'wishlist' %}" class="btn">Add to Wish List</a>
+    </div>
+
+    <div class="checkout-form">
+        <form action="{}" method="POST">
+            {% csrf_token %}
+            <input type="text" name="address" placeholder="Enter your address" required>
+            <input type="text" name="pin" placeholder="Enter your PIN" required>
+            <input type="text" name="phone" placeholder="Enter your phone number" required>
+            <select name="payment_method" required>
+                <option value="" disabled selected>Select Payment Method</option>
+                <option value="credit_card">Credit Card</option>
+                <option value="debit_card">Debit Card</option>
+                <option value="paypal">C.O.D</option>
+            </select>
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

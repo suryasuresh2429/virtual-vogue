@@ -1,0 +1,247 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Virtual Vogue</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+    <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("{% static 'images/ballet.jpg' %}");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .login {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 10px;
+        }
+
+        .login input[type="text"],
+        .login input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .login button {
+            padding: 10px;
+            width: 100%;
+            background: #3F023F;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .login button:hover {
+            background: #4B004B;
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-link a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .login {
+                padding: 15px;
+                background: transparent;
+            }
+
+            .login button {
+                padding: 10px;
+            }
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0);
+            padding: 15px;
+        }
+
+        .navbar img {
+            height: 24vh;
+            width: 44vh;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .navbar-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .navbar-links a:hover {
+            text-decoration: underline;
+        }
+
+        .info_section {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        .footer-container{
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            
+            background: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- header section starts -->
+    <header>
+        <nav class="navbar">
+            <img src="{% static 'images/11.png' %}" alt="Logo">
+            <div class="navbar-links">
+                <a href="{% url 'index' %}">Home</a>
+                <a href="{% url 'about' %}">About</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'tryon' %}">Tryon</a>
+                <a href="{% url 'user_profile' %}">User Profile</a>
+                <a href="{% url 'logout' %}">Logout</a>
+                <a href="{% url 'delete_account' %}">Delete Account</a>
+                {% else %}
+                <a href="{% url 'register' %}">Register</a>
+                <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    <!-- end header section -->
+
+    <div class="login-container">
+        <section class="login">
+            <h2>Login</h2>
+            <form method="post" action="login">
+                {% csrf_token %}
+                <input type="text" placeholder="Username" required name="username">
+                <input type="password" placeholder="Password" required name="password">
+                <button type="submit">Login</button>
+            </form>
+            {% for message in messages %}
+            <h3>{{ message }}</h3>
+            {% endfor %}
+            <div class="signup-link">
+                <p>Don’t have an account? <a href="register">Create</a></p>
+                <p><a href="email">Forget Password</a></p>
+                <p><input type="checkbox"> Accept terms and conditions</p>
+            </div>
+            <br>
+        </section>
+    </div>
+
+  <!-- info section -->
+<section class="info_section layout_padding2">
+    <div class="container">
+        <div class="row info_form_social_row">
+            <div class="col-md-8 col-lg-9">
+                <div class="info_form">
+                    <form action="">
+                        <input type="message" placeholder="Message us !!!......">
+                        <button>
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4 col-lg-3">
+                <div class="social_box">
+                    <a href="">
+                        <i class="fab fa-facebook" aria-hidden="true"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-google" aria-hidden="true"></i>
+                    </a>
+                    <a href="">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        
+       
+            
+           
+            
+        </div>
+    </div>
+</section>
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="footer_section">
+    <div class="container">
+        <p style="color:#ffffff"> 
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="">@virtualvogue.com</a>
+        </p>
+    </div>
+</footer>
+<!-- footer section -->
+
+    <!-- jQuery -->
+    <script src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "bcd83ef7-94bc-48a6-a96c-14a02c1c6ca9", // The ID of this integration.
+          region: "au-syd", // The region your integration is hosted in.
+          serviceInstanceID: "2f9eb7f5-64fb-4720-a92c-bec071bc2260", // The ID of your service instance.
+          onLoad: async (instance) => { await instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+      </script>
+</body>
+
+</html>
